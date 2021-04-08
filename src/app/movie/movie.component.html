@@ -1,0 +1,64 @@
+<style>
+    .movie {
+        width: 250px;
+        margin: 0.5rem;
+        background-color: orange;
+        border-radius: 5px;
+        overflow: hidden;
+        position: relative;
+    }
+    .movie img {
+        width: 100%;
+        height: 350px;
+        object-fit: cover;
+    }
+    .movie-info {
+        padding: 0.5rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    .movie-info h3 {
+        margin: 0;
+    }
+    .movie-overview {
+        padding: 0.5rem;
+        background-color: white;
+        color: black;
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        left: 0;
+        transform: translateY(100%);
+        transition: transform 0.3s ease-in-out;
+    }
+    .movie:hover .movie-overview {
+        transform: translateY(0);
+    }
+    .movie-vote {
+        padding: 0.3rem;
+        background-color: black;
+        border-radius: 3px;
+        font-weight: 500;
+    }
+    .movie-vote.green {
+        color: green;
+    }
+    .movie-vote.orange {
+        color: orange;
+    }
+    .movie-vote.red {
+        color: red;
+    }
+</style>
+<div class="movie">
+    <img [src]="posterPath" alt="movie.title">
+    <div class="movie-info">
+        <h3>{{movie.title}}</h3>
+        <span [class]="'movie-vote ' + voteClass(movie.vote_average)">{{movie.vote_average}}</span>
+    </div>
+    <div class="movie-overview">
+        <h3>{{movie.title}}</h3>
+        <p>{{movie.overview}}</p>
+    </div>
+</div>
